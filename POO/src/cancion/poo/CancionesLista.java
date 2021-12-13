@@ -24,7 +24,6 @@ public class CancionesLista implements Musical {
 
 	@Override
 	public void borrarCancion(Cancion c) {
-		
 		lista_de_canciones.remove(c);
 		
 	}
@@ -60,14 +59,13 @@ public class CancionesLista implements Musical {
 	}
 
 	@Override
-	public void modificarCalificacion(Cancion c, int calificacion) {
-		if (calificacion>=0 && calificacion<6) {
+	public void modificarCalificacion(Cancion c,int calificacion) {
+		if (calificacion >=0 && calificacion<6) {
 			c.setCalificaion(calificacion);
-			System.out.println("Nueva calificacion: "+calificacion);
+			System.out.println("La calificacion de la cancion "+c.getNombre()+" es "+c.getCalificaion());
 		}else {
-			System.out.println("Nueva calificación incorrecta.");
+			System.out.println("La calificacion es incorrecta.");
 		}
-		
 		
 	}
 
@@ -84,24 +82,23 @@ public class CancionesLista implements Musical {
 
 	@Override
 	public void duracionTotal() {
-		int duracionTotal = 0; 
-		for (int i = 0; i < lista_de_canciones.size(); i++) {
-			duracionTotal += lista_de_canciones.get(i).getDuracion(); 
+		int duracionTotal = 0;
+		for (Cancion cancion : lista_de_canciones) {
+			duracionTotal += cancion.getDuracion();
 		}
-		System.out.println("La duración total de la lista es: "+duracionTotal);
+		System.out.println("La lista tiene una duración total de: "+duracionTotal+" segundos.");
 	}
 
 	@Override
 	public void calificacionMedia() {
-		
-		double calificacionTotal = 0;
-		double contador = 0;
-		for (int i = 0; i < lista_de_canciones.size(); i++) {
-		contador++;
-		calificacionTotal += lista_de_canciones.get(i).getCalificaion(); 
+		double calificaionTotal = 0;
+		double numerodecanciones = 0;
+		for (Cancion cancion : lista_de_canciones) {
+			numerodecanciones++;
+			calificaionTotal += cancion.getCalificaion();
 		}
-		double calificacionMedia = calificacionTotal/contador;
-		System.out.println("La claificación media de la lista es: "+calificacionMedia);
+		double calificacionMedia = calificaionTotal/numerodecanciones;
+		System.out.println("La calificación media de la lista es: "+calificacionMedia);
 	}
 
 	

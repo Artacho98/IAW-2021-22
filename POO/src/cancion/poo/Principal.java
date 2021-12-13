@@ -21,10 +21,11 @@ public class Principal {
 		
 		lista.nuevaCancion(c1);
 		lista.nuevaCancion(c2);
+		
+		lista.modificarCalificacion(c1, 2);
 		lista.modificarCalificacion(c2, 3);
-		lista.modificarCalificacion(c1, 5);
+		
 		lista.calificacionMedia();
-		lista.duracionTotal();
 
 	}
 
