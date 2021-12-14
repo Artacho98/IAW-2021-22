@@ -3,7 +3,8 @@ package poo;
 public class Principal {
 
 	public static void main(String[] args) {
-		Regalos r1 = new Regalos("Antonio Artacho", "Hasbro", 1998, 100, false, "muñeco");
+		Regalos r1 = new Regalos("Antonio Artacho", "Hasbro", 2021, 100, false, "coche");
+		Regalos r2 = new Regalos("Kerry caberga", "Nancy", 2005, 5, true, "sexual");
 		
 		r1.modificarExistencias();
 		
@@ -11,9 +12,7 @@ public class Principal {
 
 		r1.comprobar();
 		
-		r1.modificarTipo("Peluche");
 		
-		System.out.println(r1);
 
 	}
 

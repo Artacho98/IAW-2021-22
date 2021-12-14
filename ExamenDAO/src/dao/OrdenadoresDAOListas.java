@@ -20,7 +20,7 @@ public class OrdenadoresDAOListas implements OrdenadoresDAO {
 
 	@Override
 	public void nuevoOredenador(Ordenadores o) {
-		if (lista_de_ordenadores.contains(o)==false) {
+		if (!lista_de_ordenadores.contains(o)) {
 			lista_de_ordenadores.add(o);			
 		}else {
 			System.out.println("El ordenador "+ o +" ya está en la lista.");

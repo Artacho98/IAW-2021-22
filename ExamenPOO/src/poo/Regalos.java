@@ -9,7 +9,7 @@ public class Regalos {
 	private String tipo;
 	public Regalos() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Regalos(String nombre, String marca, int anyoCompra, double precio, boolean existencias, String tipo) {
 		super();
@@ -62,23 +62,25 @@ public class Regalos {
 				+ ", existencias=" + existencias + ", tipo=" + tipo + "]";
 	}
 	
+	// Método que actualice la posibilidad de existencias de un regalo al contrario del que tiene.
 	public void modificarExistencias() {
-		if (this.existencias == true) {
-			this.existencias = false;
-		}else {
-			this.existencias = true;
-		}
+		this.existencias = !this.existencias;
 	}
 	
+	// Método que incremente el precio del regalo un determinado porcentaje indicado en el parámetro de entrada.
 	public void modificarPrecio(double porcentaje) {
 		this.precio += this.precio*(porcentaje/100);
 	}
 	
+	// Método que modifique el tipo de regalo según el parámetro de entrada.
 	public void modificarTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public void comprobar() {
-		if (this.tipo.equals("coche") && this.anyoCompra == 2021 && this.precio>50) {
+	
+	// Método para comprobar si un regalo es de tipo coches, es de este año y tiene un precio mayor que 50€. 
+	//Si es así debe devolver cierto, en caso contrario, falso.
+	public void  comprobar() {
+		if (this.tipo.equals("coche") && this.anyoCompra==2021 && this.precio>50) {
 			System.out.println(true);
 		}else {
 			System.out.println(false);
