@@ -1,6 +1,6 @@
+<%@page import="es.iestriana.dao.UsuarioDAOBD"%>
 <%@page import="es.iestriana.bean.Usuario"%>
 <%@page import="java.util.List"%>
-<%@page import="es.iestriana.dao.UsuarioDAOBD"%>
 <%@page import="es.iestriana.dao.UsuarioDAO"%>
 <%@page import="es.iestriana.bean.Conexion"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,17 +14,17 @@
 <body>
 	<h1>Usuarios de la BD</h1>
 	<%
-			ServletContext sc = getServletContext();
-			String usu = sc.getInitParameter("usuario");
-			String pass = sc.getInitParameter("password");
-			String bd = sc.getInitParameter("database");
-			String driver = sc.getInitParameter("driver");
-			
-			Conexion con = new Conexion(usu, pass, bd, driver);
-			
-			UsuarioDAO uDAO = new UsuarioDAOBD();
-			List<Usuario> usuarios = uDAO.listarUsuarios(con);			
-		%>
+		ServletContext sc = getServletContext();
+		String usu = sc.getInitParameter("usuario");
+		String pass = sc.getInitParameter("password");
+		String bd = sc.getInitParameter("database");
+		String driver = sc.getInitParameter("driver");
+		
+		Conexion con = new Conexion(usu, pass, bd, driver);
+		
+		UsuarioDAO uDAO = new UsuarioDAOBD();
+		List<Usuario> usuarios = uDAO.listarUsuarios(con);
+	%>
 		
 		<div class="row mt-2">
 			<% 
