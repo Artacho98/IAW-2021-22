@@ -25,14 +25,24 @@
   	<param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
   <servlet>
-  	<servlet-name>BorrarVideojuego</servlet-name>
-  	<display-name>BorrarVideojuego</display-name>
+  	<servlet-name>BorrarVideojuegos</servlet-name>
+  	<display-name>BorrarVideojuegos</display-name>
   	<description></description>
   	<servlet-class>es.iestriana.controller.BorrarVideojuego</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EditarVideojuego</servlet-name>
+  	<display-name>EditarVideojuego</display-name>
+  	<description></description>
+  	<servlet-class>es.iestriana.controller.EditarVideojuego</servlet-class>
+  </servlet>
   <servlet-mapping>
-  	<servlet-name>BorrarVideojuego</servlet-name>
-  	<url-pattern>/BorrarVideojuego</url-pattern>
+  	<servlet-name>BorrarVideojuegos</servlet-name>
+  	<url-pattern>/BorrarVideojuegos</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditarVideojuego</servlet-name>
+  	<url-pattern>/EditarVideojuego</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

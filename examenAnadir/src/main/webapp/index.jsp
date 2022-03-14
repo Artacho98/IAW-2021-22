@@ -20,7 +20,7 @@
 	<div class="container">	
 		<div class="row mt-2">
 			<div class="col-2">
-				<a class="btn btn-primary btn-xs btn-block" href="jsp/anadirVideojuegos.jsp">AÑADIR LIBRO</a>
+				<a class="btn btn-primary btn-xs btn-block" href="jsp/anadirVideojuegos.jsp">AÑADIR VIDEOJUEGO</a>
 			</div>
 		</div>
 	</div>

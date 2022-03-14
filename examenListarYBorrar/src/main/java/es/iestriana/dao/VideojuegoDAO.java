@@ -15,4 +15,8 @@ public interface VideojuegoDAO {
 	
 	public int borrarVideojuego(Conexion c, int idVideogame);
 	
+	public Videojuego obtenerVideojuegos(Conexion con, String name);
+	
+	public void actualizarVideojuego(Conexion con, Videojuego vj);
+	
 }

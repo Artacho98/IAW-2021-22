@@ -13,7 +13,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>WEB LIBROS</title>
+    <title>WEB VIDEOJUEGOS</title>
   </head>
   <body>
 	<div class="container">
@@ -36,13 +36,14 @@
 			%>
 				<div class="col">
 					<div class="card" style="margin: 10px">
-					<img alt="Videojuego" src="image.jsp?idVideogame=<%=aux.getIdVideogame() %>" class="card-img-top" style="width: 100%;height: 100%">
+					<img alt="Videojuego" src="jsp/image.jsp?idVideogame=<%=aux.getIdVideogame() %>" class="card-img-top" style="width: 100%;height: 100%">
 						<div class="card-body">
 							<h5 class="card-title"><%=aux.getName() %></h5>
 							<p class="card-text"><%=aux.getAnyo() %></p>
 							<p class="card-text"><%=aux.getCompany() %></p>
 							<p class="card-text"><%=aux.getType() %></p>
 							<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#borrarVideojuego<%=aux.getIdVideogame()%>">Borrar</button>
+							<button type="button" class="btn btn-secondary" onclick="location.href='jsp/editarVideojuego.jsp?idVideogame=<%=aux.getIdVideogame()%>'">Editar</button>
 							
 							<!-- Modal -->
 							<div class="modal fade" id="borrarVideojuego<%=aux.getIdVideogame()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

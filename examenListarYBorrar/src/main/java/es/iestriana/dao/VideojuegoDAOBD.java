@@ -42,7 +42,7 @@ public class VideojuegoDAOBD implements VideojuegoDAO{
 	
 	@Override
 	public byte[] obtenerPortada(int idVideogame, Conexion c) {
-		byte[]portada = null;
+		byte[]photo = null;
 		
 		String query = "SELECT photo FROM videogames WHERE idVideogame = ?";
 		
@@ -53,14 +53,14 @@ public class VideojuegoDAOBD implements VideojuegoDAO{
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				portada = rs.getBytes("photo");
+				photo = rs.getBytes("photo");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return portada;
+		return photo;
 	}
 	public int borrarVideojuego(Conexion c, int idVideogame) {
 		int cuantos = 0;
@@ -80,4 +80,55 @@ public class VideojuegoDAOBD implements VideojuegoDAO{
 		return cuantos;
 	}
 	
+	public Videojuego obtenerVideojuegos(Conexion con, String name) {
+		Videojuego aux = null;
+		
+		String query = "SELECT * FROM videogames WHERE name= ?";
+		
+		try {
+			PreparedStatement ps = con.getConector().prepareStatement(query);
+			ps.setString(1, name);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				aux = new Videojuego(rs.getInt("idVideogame"), rs.getString("name"), 
+						rs.getInt("anyo"), rs.getString("company"), rs.getString("type"),
+						rs.getBytes("photo"));				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return aux;
+	}
+	
+	public void actualizarVideojuego(Conexion con, Videojuego vj) {	
+		try {
+			PreparedStatement ps = null;
+			if (vj.getPhoto() != null) {
+				String sql = "UPDATE videogames SET name=?,anyo=?,company=?,type=?, photo=? WHERE idVideogame=?";
+				
+				ps = con.getConector().prepareStatement(sql);
+				ps.setString(1, vj.getName());
+				ps.setInt(2, vj.getAnyo());
+				ps.setString(3, vj.getCompany());
+				ps.setString(4, vj.getType());
+				ps.setBytes(5, vj.getPhoto());
+			} else {
+				String sql = "UPDATE videogames SET name=?,anyo=?,company=?,type=? WHERE idVideogame=?";
+				
+				ps = con.getConector().prepareStatement(sql);
+				ps.setString(1, vj.getName());
+				ps.setInt(2, vj.getAnyo());
+				ps.setString(3, vj.getCompany());
+				ps.setString(4, vj.getType());
+			}					
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

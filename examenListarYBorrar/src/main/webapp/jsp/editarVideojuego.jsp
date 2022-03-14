@@ -1,6 +1,5 @@
 <!doctype html>
 <%@page import="es.iestriana.bean.Videojuego"%>
-<%@page import="java.util.List"%>
 <%@page import="es.iestriana.dao.VideojuegoDAOBD"%>
 <%@page import="es.iestriana.dao.VideojuegoDAO"%>
 <%@page import="es.iestriana.bean.Conexion"%>
@@ -13,11 +12,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>WEB LIBROS</title>
+    <title>WEB LIBROS - EDITAR</title>
   </head>
   <body>
 	<div class="container">
-		<%
+	<%
 			ServletContext sc = getServletContext();
 			String usu = sc.getInitParameter("usuario");
 			String pass = sc.getInitParameter("password");
@@ -27,48 +26,35 @@
 			Conexion con = new Conexion(usu, pass, bd, driver);
 			
 			VideojuegoDAO vjDAO = new VideojuegoDAOBD();
-			List<Videojuego> videojuegos = vjDAO.listarVideojuegos(con);			
-		%>
-		
-		<div class="row mt-2">
+			
+			Videojuego aux = vjDAO.obtenerVideojuegos(con, request.getParameter("name"));
+	%>
+		<div class="row">
 			<div class="col">
-				<span></span>
-				<nav aria-label="breadcrumb">
-				  <ol class="breadcrumb">
-				    <li class="breadcrumb-item">Hola <%=((Usuario)session.getAttribute("usuarioWeb")).getNombre() %></li>
-				    <li class="breadcrumb-item active" aria-current="page">Principal</li>
-				    <li class="breadcrumb-item"><a href="../CerrarSesion">Cerrar Sesión</a></li>
-				  </ol>
-				</nav>
+				<h2>Editar Videojuego</h2><!doctype html>
+				<form method="post" action="../EditarVideojuego" enctype="multipart/form-data">
+					<input type="hidden" name="idVideogame" id="idVideogame" value="<%=aux.getIdVideogame()%>">
+				  <div class="mb-3">
+				    <label for="name" class="form-label">Nombre</label>
+				    <input type="text" class="form-control" id="name" name="name" 
+				    		aria-describedby="nameHelp" autofocus="autofocus" value="<%=aux.getName()%>">				    
+				  </div>
+				  <div class="mb-3">
+				    <label for="anyo" class="form-label">Anyo</label>
+				    <input type="text" class="form-control" id="anyo" name="anyo" value="<%=aux.getAnyo()%>">
+				  </div>
+				  <div class="mb-3">
+				    <label for="company" class="form-label">Company</label>
+				    <input type="text" class="form-control" id="company" name="company" value="<%=aux.getCompany()%>">
+				  </div>
+				  <div class="mb-3">
+				  	<img alt="Photo" src="image.jsp?idIdVideogame=<%=aux.getIdVideogame()%>" style="width: 40px;height: 60px">
+				    <label for="photo" class="form-label">Portada</label>
+				    <input type="file" class="form-control" id="photo" name="photo">
+				  </div>
+				  <button type="submit" class="btn btn-primary">Actualizar</button>
+				</form>
 			</div>
-		</div>
-		
-		<div class="row mt-2">
-			<div class="col-2">
-				<a class="btn btn-primary btn-xs btn-block" href="anadirLibro.jsp">AÑADIR LIBRO</a>
-			</div>
-		</div>
-		
-		<div class="row mt-2">
-			<% 
-			for(Videojuego aux: videojuegos) {
-			%>
-				<div class="col">
-					<div class="card" style="margin: 10px">
-						<img alt="Videojuego" src="jsp/image.jsp?idVideogame=<%=aux.getIdVideogame() %>" class="card-img-top" style="width: 100%;height: 100%">
-						<div class="card-body">
-							<h5 class="card-title"><%=aux.getName() %></h5>
-							<p class="card-text"><%=aux.getAnyo() %></p>
-							<p class="card-text"><%=aux.getCompany() %></p>
-							<p class="card-text"><%=aux.getType() %></p>
-							<button type="button" class="btn btn-secondary" onclick="location.href='jsp/añadirVideojuego.jsp'">Añadir videojuego</button>
-
-						</div>
-					</div>
-				</div>
-			<%
-			}
-			%>
 		</div>
 	</div>
 	

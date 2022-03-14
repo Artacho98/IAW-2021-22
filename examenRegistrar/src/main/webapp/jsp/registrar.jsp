@@ -21,7 +21,7 @@
 				    <input type="email" class="form-control" id="email" name="email" aria-describedby="loginHelp" autofocus="autofocus" required="required">				    
 				  </div>
 				  <div class="mb-3">
-				    <label for="password" class="form-label">Pwd</label>
+				    <label for=pwd class="form-label">Pwd</label>
 				    <input type="password" class="form-control" id="pwd" name="pwd">
 				  </div>
 				  <div class="mb-3">
