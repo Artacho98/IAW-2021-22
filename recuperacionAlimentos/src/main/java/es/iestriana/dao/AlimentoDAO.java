@@ -8,4 +8,6 @@ import es.iestriana.bean.Conexion;
 public interface AlimentoDAO {
 
 	public List<Alimento> listarAlimentos (Conexion c);
+	
+	public int borrarAlimento(Conexion c, int idAlimento);
 }

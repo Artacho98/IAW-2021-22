@@ -24,6 +24,16 @@
   	<param-name>driver</param-name>
   	<param-value>com.mysql.jdbc.Driver</param-value>
   </context-param>
+  <servlet>
+  	<servlet-name>BorrarAlimento</servlet-name>
+  	<display-name>BorrarAlimento</display-name>
+  	<description></description>
+  	<servlet-class>es.iestriana.controller.BorrarAlimento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BorrarAlimento</servlet-name>
+  	<url-pattern>/BorrarAlimento</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
   	<welcome-file>index.jsp</welcome-file>

@@ -40,4 +40,22 @@ public List<Alimento> listarAlimentos (Conexion c) {
 		
 		return alimentos;
 	}
+
+	public int borrarAlimento(Conexion c, int idAlimento) {
+		int cuantos = 0;
+		
+		String sql = "DELETE FROM alimentos WHERE idAlimento = ?";
+		
+		try {
+			PreparedStatement ps = c.getConector().prepareStatement(sql);
+			ps.setInt(1, idAlimento);
+			
+			cuantos = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cuantos;
+	}
 }
